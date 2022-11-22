@@ -1,0 +1,9 @@
+# This configuration file contains all the hosts in the network
+# by their connection string
+# List here the your hosts and the use that has the sudo rights for that host, for example:
+# john@home-server
+# pi@my-raspberry-pi
+pi@opus
+pi@kristalliranta
+juha@tvtaso
+pi@kasvihuone
