@@ -22,7 +22,7 @@ check-pub-key-file () {
   ssh-keygen -l -f $1
   if [ $? -ne 0 ]
   then
-    echo "Public key file does not look valis: $1" >&2
+    echo "Public key file does not look valid $1" >&2
     exit 1
   else
     echo "Public key file looks valid."
@@ -42,6 +42,9 @@ while read -r line; do
 done < ./hosts
 
 for host in ${hostsArray[@]}; do
-  ssh $host 'uptime'
+    echo "Copying public key to $host"
+    ssh-copy-id -i $1 $host
+    echo "Checking connectivity to $1 (you should not be required to type password...)"
+    ssh $host 'echo "Host is reachable"'
 done
 
